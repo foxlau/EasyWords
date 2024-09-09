@@ -1,6 +1,7 @@
 {
   "manifest_version": 3,
   "name": "EasyWords",
+  "description": "A minimalist English word collector extension.",
   "version": "1.0",
   "icons": {
     "16": "./images/icon16.png",
