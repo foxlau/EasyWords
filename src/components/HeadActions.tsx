@@ -40,6 +40,7 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { Input } from "./ui/input";
+import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 
 const HeadActions: React.FC<Pick<ActionsProps, "onDeleteAll" | "onAdd">> = ({
   onDeleteAll,
@@ -66,20 +67,31 @@ const HeadActions: React.FC<Pick<ActionsProps, "onDeleteAll" | "onAdd">> = ({
 
   return (
     <>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-8 w-8"
+            onClick={() => setIsOpen(true)}
+          >
+            <span className="sr-only">Add new words</span>
+            <PlusCircleIcon size="18" />
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>Add new words</TooltipContent>
+      </Tooltip>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" size="icon" className="h-8 w-8">
             <span className="sr-only">Menu</span>
-            <MenuIcon size={18} />
+            <MenuIcon size="18" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-56">
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
           <DropdownMenuItem onClick={() => openNewTab(allPageURL)}>
             <ExternalLinkIcon size="14" className="mr-2" /> All words
-          </DropdownMenuItem>
-          <DropdownMenuItem onSelect={() => setIsOpen(true)}>
-            <PlusCircleIcon size="14" className="mr-2" /> Add new words
           </DropdownMenuItem>
           <DropdownMenuItem
             onSelect={() => setShowDeleteDialog(true)}

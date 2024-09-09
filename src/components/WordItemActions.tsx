@@ -42,9 +42,15 @@ export const WordItemActions: React.FC<
             onClick={() => onRemember(word.word)}
           >
             {!word.remembered ? (
-              <HeartIcon size={14} className="opacity-60" />
+              <>
+                <span className="sr-only">Remembered</span>
+                <HeartIcon size={14} className="opacity-60" />
+              </>
             ) : (
-              <HeartOffIcon size={14} className="text-destructive" />
+              <>
+                <span className="sr-only">Unremembered</span>
+                <HeartOffIcon size={14} className="text-destructive" />
+              </>
             )}
           </Button>
         </TooltipTrigger>
