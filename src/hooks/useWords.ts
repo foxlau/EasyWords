@@ -70,8 +70,8 @@ const useWords = () => {
       const html = await response.text();
       newWord = parseHtml(newWord, html);
 
-      if (!newWord.dictionary.length || !newWord.phonetic.length) {
-        notification(`No related words found`);
+      if (!newWord.dictionary.length && !newWord.phonetic.length) {
+        notification(`No related words found for "${newWord.word}"`);
         return false;
       }
 

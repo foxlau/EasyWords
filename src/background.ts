@@ -47,8 +47,8 @@ chrome.contextMenus.onClicked.addListener(
             const parsedWord = parseHtml(newWord, html);
             Object.assign(newWord, parsedWord);
 
-            if (!newWord.dictionary.length || !newWord.phonetic.length) {
-              notification(`No related words found`);
+            if (!newWord.dictionary.length && !newWord.phonetic.length) {
+              notification(`No related words found for "${selectedText}"`);
               return;
             }
 

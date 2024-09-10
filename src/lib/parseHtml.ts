@@ -19,13 +19,11 @@ export function parseHtml(newWord: Word, html: string) {
   // dictionary
   const dictMatches = [
     ...html.matchAll(
-      /<li><span class="pos">(.*?)<\/span><span class="def b_regtxt">(.*?)<\/span><\/li>/g,
+      /<li><span class="pos(?:\s+\w+)?">(.*?)<\/span><span class="def b_regtxt"><span>(.*?)<\/span><\/span><\/li>/g,
     ),
   ];
   newWord.dictionary = dictMatches.map((match) => ({
-    [match[1].trim()]: decodeHTMLEntities(
-      match[2].replace(/<[^>]+>/g, "").trim(),
-    ),
+    [match[1].trim()]: decodeHTMLEntities(match[2].trim()),
   }));
 
   // phonetic
