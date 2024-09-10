@@ -1,7 +1,7 @@
 import { DictionaryEntry } from "@/types";
 import { Badge } from "./ui/badge";
 
-const Dictionary: React.FC<{ dictionary: DictionaryEntry[] }> = ({
+export const Dictionary: React.FC<{ dictionary: DictionaryEntry[] }> = ({
   dictionary,
 }) => (
   <>
@@ -24,5 +24,3 @@ const Dictionary: React.FC<{ dictionary: DictionaryEntry[] }> = ({
     )}
   </>
 );
-
-export default Dictionary;

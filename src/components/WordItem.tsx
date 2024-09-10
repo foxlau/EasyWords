@@ -1,7 +1,7 @@
 import React from "react";
 import { ActionsProps, Word } from "@/types";
 import { cn, getFirstObjectValue } from "@/lib/utils";
-import Dictionary from "./Dictionary";
+import { Dictionary } from "./Dictionary";
 import { WordDetails } from "./WordDetails";
 import { WordItemActions } from "./WordItemActions";
 import { WordSpeak } from "./WordSpeak";

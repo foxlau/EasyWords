@@ -7,8 +7,6 @@ const playAudio = (url: string) => {
   const audio = new Audio(url);
   audio.play().catch((error) => {
     console.error("Error playing audio:", error);
-    const utterance = new SpeechSynthesisUtterance(url);
-    speechSynthesis.speak(utterance);
   });
 };
 
@@ -17,15 +15,18 @@ export const WordSpeak: React.FC<{
   audioUrl: string | null;
   className?: string;
 }> = ({ word, audioUrl, className }) => {
-  if (!audioUrl) {
-    return;
-  }
-
   return (
     <Tooltip>
       <TooltipTrigger asChild>
         <Button
-          onClick={() => playAudio(audioUrl)}
+          onClick={() => {
+            if (audioUrl) {
+              playAudio(audioUrl);
+            } else {
+              const utterance = new SpeechSynthesisUtterance(word);
+              speechSynthesis.speak(utterance);
+            }
+          }}
           aria-label={`Play ${word} pronunciation`}
           variant="ghost"
           size="icon"

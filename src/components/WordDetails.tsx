@@ -9,7 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import TranslationList from "./Dictionary";
+import { Dictionary } from "./Dictionary";
 import { Phonetic } from "./Phonetic";
 import { Button } from "./ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
@@ -54,19 +54,19 @@ export const WordDetails: React.FC<{
           <DialogTitle className="text-2xl font-bold text-primary">
             {word.word}
           </DialogTitle>
-
-          <DialogDescription>
-            {word.tip && (
-              <p className="mt-2 inline-flex rounded-md border border-yellow-200 bg-yellow-50 p-2 text-xs text-yellow-800">
-                {word.tip}
-              </p>
-            )}
-
-            <Phonetic phonetic={word.phonetic} />
-          </DialogDescription>
         </DialogHeader>
 
-        <TranslationList dictionary={word.dictionary} />
+        <DialogDescription>
+          {word.tip && (
+            <p className="inline-flex rounded-md border border-yellow-200 bg-yellow-50 p-2 text-xs text-yellow-800">
+              {word.tip}
+            </p>
+          )}
+
+          <Phonetic phonetic={word.phonetic} word={word.word} />
+        </DialogDescription>
+
+        <Dictionary dictionary={word.dictionary} />
 
         <div className="flex flex-col space-y-2">
           {word.example?.length ? (

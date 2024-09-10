@@ -3,9 +3,14 @@ import { WordSpeak } from "./WordSpeak";
 
 export const Phonetic: React.FC<{
   phonetic: Word["phonetic"];
-}> = ({ phonetic }) => {
+  word: Word["word"];
+}> = ({ phonetic, word }) => {
+  if (!phonetic.length) {
+    phonetic = [{ [word]: "" }];
+  }
+
   return (
-    <div className="mt-2 flex flex-col sm:flex-row sm:space-x-2">
+    <div className="flex flex-col sm:flex-row sm:space-x-2">
       {phonetic.map((item, index) => {
         const [key, value] = Object.entries(item)[0];
         return (
